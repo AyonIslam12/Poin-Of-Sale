@@ -5,10 +5,10 @@
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
                     <div class="footer-widget">
                         <div class="footer-logo mb-25">
-                            <img src="{{asset('contents/website')}}/img/logo/1.png" alt="" />
+                            <img src="{{asset('/logo/logo.png')}}" alt="" />
                         </div>
                         <div class="footer-content">
-                            <p>OneClick is a premium Wordpress theme with advanced admin module. It's extremely customizable, easy to use and</p>
+                            <p>Ayon'Shop  is a premium Laravel theme with advanced admin module. It's extremely customizable, easy to use and</p>
                             <ul>
                                 <li>
                                     <a href="#" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a>
@@ -39,7 +39,7 @@
                                         <i class="fa fa-map-marker"></i>
                                     </div>
                                     <div class="contuct-info">
-                                        <span>75, Avenue Anatole France, Paris</span>
+                                    <p class="text-dark font-weight-bolder"> Address: <span class="text-dark">Pingna, Sarisabari, jamalpur</span></p>
                                     </div>
                                 </div>
                             </li>
@@ -49,7 +49,7 @@
                                         <i class="fa fa-fax"></i>
                                     </div>
                                     <div class="contuct-info">
-                                        <span>01.234 56789 - 10.987 65432</span>
+                                        <p class="text-dark font-weight-bolder"> Phone Number: <span class="text-dark">+880179-1205437</span></p>
                                     </div>
                                 </div>
                             </li>
@@ -59,7 +59,7 @@
                                         <i class="fa fa-envelope"></i>
                                     </div>
                                     <div class="contuct-info">
-                                        <span>hasib.me1995@gmail.com</span>
+                                        <p class="text-dark font-weight-bolder"> Email: <span class="text-primary"> mh.ayon222@gmail.com</span></p>
                                     </div>
                                 </div>
                             </li>
@@ -72,8 +72,8 @@
                         <div class="footer-menu home3-hover">
                             <ul>
                                 <li><a href="blog.html">Our Blog</a></li>
-                                <li><a href="shop.html">About Our Shop</a></li>
-                                <li><a href="#">Secure Shopping</a></li>
+                                <li><a href="shop.html">About My Shop</a></li>
+                                <li><a href="#">Securelly Buy Products</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                             </ul>
                         </div>
@@ -113,7 +113,7 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <div class="copyright">
-                        <span>Copyright &copy; 2016 <a href="#">HasTech</a> All Rights Reserved.</span>
+                        <span>Copyright &copy; 2021 <a href="#">Mehedi-Hasan-Ayon</a> All Rights Reserved.</span>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-12">

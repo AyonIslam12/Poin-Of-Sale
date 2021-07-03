@@ -23,6 +23,6 @@ Route::group([
     'prefix' => 'json',
 ], function () {
     Route::get('/latest-products-json', [SiteController::class,'latest_product_json'])->name('product_latest_product_json');
-    //Route::get('/search-product-json/{key}',[SiteController::class,'search_product_json'])->name('product_search_product_json');
+    Route::get('/search-product-json/{key}',[SiteController::class,'search_product_json'])->name('product_search_product_json');
 
 });

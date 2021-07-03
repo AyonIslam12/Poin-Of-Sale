@@ -4,9 +4,9 @@
 Point-Of-Sale
 @stop
 @section('content')
-<div class="row" style="margin: 100px 0px;">
+<div class="row" style="margin: 10px 0px;">
     <div class="col-12">
-        <h2 class="text-center">Point Of Sale</h2>
+        <h2 class="text-center font-weight-bold text-uppercase py-3">Point Of Sale</h2>
         <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -16,7 +16,11 @@ Point-Of-Sale
                                 <h3 class="text-uppercase">Pos</h3>
                             </div>
                             <div class="col-md-8">
-                                <input  type="text"placeholder="search by name, price" class="form-control">
+                                <input
+                                @keyup="search_product($event.target.value)"
+                                type="text"
+                                placeholder="search by name, price"
+                                class="form-control">
                             </div>
 
                         </div>
@@ -50,9 +54,9 @@ Point-Of-Sale
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>product</th>
-                                            <th class="text-center">qty</th>
-                                            <th class="text-right">price</th>
+                                            <th>Product Name</th>
+                                            <th class="text-center">Quantity</th>
+                                            <th class="text-right">Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>

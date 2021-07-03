@@ -17,4 +17,12 @@ class SiteController extends Controller
         $collection = Product::where('status',1)->orderBy('id', 'DESC')->paginate(6);
         return $collection;
     }
+    public function search_product_json(Request $request,  $key){
+        $collection = Product::where('status',1)
+        ->where('name', $key)
+        ->orWhere('price', $key)
+        ->orWhere('name','LIKE','%'. $key . '%')
+       ->orderBy('id','DESC')->paginate(6);
+        return $collection;
+    }
 }

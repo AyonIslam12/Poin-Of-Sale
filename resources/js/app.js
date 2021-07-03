@@ -50,6 +50,16 @@ if(document.getElementById('app')){
                     this.products = res;
                 })
             },
+            //for Serch products
+            search_product: _.debounce(function(key){
+                key.length > 0 ?
+                $.get("/json/search-product-json/"+key, (res) => {
+                 //this.products = res.data;
+                 this.products = res;
+             })
+             :
+             this.get_product_pagination();
+             },500),
             //for add product to pos table
             add_product_to_pos_list: function(product){
                 let product_check = this.pos_product_list.find((item) => item.id === product.id);

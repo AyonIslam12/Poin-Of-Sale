@@ -1948,6 +1948,15 @@ if (document.getElementById('app')) {
           _this.products = res;
         });
       },
+      //for Serch products
+      search_product: _.debounce(function (key) {
+        var _this2 = this;
+
+        key.length > 0 ? $.get("/json/search-product-json/" + key, function (res) {
+          //this.products = res.data;
+          _this2.products = res;
+        }) : this.get_product_pagination();
+      }, 500),
       //for add product to pos table
       add_product_to_pos_list: function add_product_to_pos_list(product) {
         var product_check = this.pos_product_list.find(function (item) {
