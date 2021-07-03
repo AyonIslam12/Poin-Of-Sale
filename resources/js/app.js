@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('productBody', require('./components/productBody.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,18 +33,23 @@ if(document.getElementById('app')){
     const app = new Vue({
         el: '#app',
         created: function(){
-            $.get("/json/latest-products-json",(res)=>{
-                this.products = res.data;
-            })
+            this.get_product_pagination();
         },
         data: function(){
             return {
-                products: [],
+                products: {},
                 pos_product_list: []
             }
         },
 
         methods:{
+            //for Pagination
+            get_product_pagination: function(page=1){
+                $.get("/json/latest-products-json?page="+page,(res)=>{
+                    //this.products = res.data;
+                    this.products = res;
+                })
+            },
             //for add product to pos table
             add_product_to_pos_list: function(product){
                 let product_check = this.pos_product_list.find((item) => item.id === product.id);
@@ -64,7 +70,26 @@ if(document.getElementById('app')){
 
 
             },
+            update_pos_qty: function(product,qty){
+                let check_product = this.pos_product_list.find((item) => item.id === product.id);
+                check_product.qty = qty;
+            },
+            remove_pos_product: function (product) {
+                this.pos_product_list = this.pos_product_list.filter((item) => item.id != product.id);
+
+            },
+
         },
+
+        computed:{
+            get_total_pos_price: function(){
+                this.pos_total_price = this.pos_product_list.reduce((total, product) => {
+                    return total + product.price * product.qty;
+                }, 0);
+                return this.pos_total_price;
+
+            }
+        }
     });
 
 }

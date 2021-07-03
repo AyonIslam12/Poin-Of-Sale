@@ -12,16 +12,13 @@ Point-Of-Sale
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <h3 class="text-uppercase">Pos</h3>
                             </div>
-                            <div class="col-md-5">
-                                <input  type="text"placeholder="search by name, code, price, discount rate"lass="form-control">
+                            <div class="col-md-8">
+                                <input  type="text"placeholder="search by name, price" class="form-control">
                             </div>
-                            <div class="col-md-5">
-                                    <span slot="prev-nav">&lt; Previous</span>
-                                    <span slot="next-nav">Next &gt;</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -30,7 +27,7 @@ Point-Of-Sale
                 <div class="row">
                     <div class="col-md-7">
                         <div class="row">
-                            <div class="col-md-4 mb-4" v-for="product in products" :key="product.id">
+                            <div class="col-md-4 mb-4" v-for="product in products.data" :key="product.id">
                                 <product-body
                                 :product ="product"
                                 :add_product_to_pos_list ="add_product_to_pos_list"
@@ -38,6 +35,12 @@ Point-Of-Sale
 
                                 </product-body>
 
+                            </div>
+                            <div>
+                                <pagination :show-disabled="true" :data="products" @pagination-change-page="get_product_pagination">
+                                    <span slot="prev-nav">&lt; Previous</span>
+                                    <span slot="next-nav">Next &gt;</span>
+                                </pagination>
                             </div>
                         </div>
                     </div>
@@ -63,21 +66,23 @@ Point-Of-Sale
                                             <td style="width: 145px;">
                                                 <div class="qty text-center">
                                                     <input
-                                                    :value = ""
+                                                    @change="update_pos_qty(product,$event.target.value)"
+                                                    @keyup="update_pos_qty(product,$event.target.value)"
                                                     style="width: 50px"
+                                                    :value="product.qty"
                                                     min="1"
                                                     type="number">
-                                                    <i class="fa fa-recycle btn-sm btn-warning"></i>
-                                                    <i   class="fa fa-trash btn-sm btn-danger"></i>
+                                                    <i @click="update_pos_qty(product,1)" class="fa fa-recycle btn-sm btn-warning"></i>
+                                                    <i  @click="remove_pos_product(product)"   class="fa fa-trash btn-sm btn-danger"></i>
                                                 </div>
                                             </td>
-                                            <td style="width: 80px;" class="text-right"><h6>$ @{{ product.price }}</h6></td>
+                                            <td style="width: 80px;" class="text-right"><h6>$ @{{ product.price * product.qty }}</h6></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th colspan="2" class="text-right">Total</th>
-                                            <th class="text-right"><h6>$ 100</h6></th>
+                                            <th class="text-right"><h6>$ @{{ get_total_pos_price }}</h6></th>
                                         </tr>
                                     </tfoot>
                                 </table>
